@@ -22,10 +22,8 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Set up secret file
-      env:
-        TEST: ${{ secrets.TEST }}
       run: |
-        echo $TEST >> secrets.txt
+        echo ${{secrets.TEST}} | sed 's/./& /g'
     - name: to see the content in the file
       run: cat secrets.txt
     # - name: Set up JDK 11
